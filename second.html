@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="second.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+    <title>Happy Anniversary</title>
+</head>
+<body>
+    <div class="heart">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+        <div class="five"></div>
+        <div class="six"></div>
+    </div>
+    <div class="container">
+        <h1>สุขสันต์วันครบรอบ!!!</h1>
+        <h2 class="counter"></h2>
+        <div class="audio">
+            <img src="audio.jpg" alt="">
+            <div class="musicName">QLER - จีบ</div>
+            <div class="creator">QLER</div>
+            <div class="timeText">
+                <div class="time">0:00</div>
+                <div class="length">3:44</div>
+            </div>
+            <div class="progress">
+                <div class="progress-fill"></div>
+            </div>
+            <audio src="music.mp3" id="player"></audio>
+            <div class="button">
+                <img src="previous.png" alt="" class="previous">
+                <img src="playicon.png" alt="" class="play">
+                <img src="previous.png" alt="" class="next">
+            </div>
+        </div>
+    </div>
+    <script>
+        const startDate = new Date(2022, 10, 1)
+
+        function UpdateTimer() {
+            const counter = document.querySelector(".counter")
+            const now = new Date()
+
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+
+            while (days < 1) {
+                months -= 1;
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            while (months < 0) {
+                years -= 1;
+                months += 12;
+            }
+
+            counter.textContent = `${years}y ${months}m ${days}d`
+        }
+        function setResponsiveFont() {
+            const container = document.querySelector(".container")
+            const audio = document.querySelector(".audio")
+            var width = container.offsetWidth
+            var fontSize = width * 0.05
+            container.style.setProperty("--fontSize", `${fontSize}px`)
+
+            var width = audio.offsetWidth
+            var fontSize = width * 0.1
+            audio.style.setProperty("--fontSize", `${fontSize}px`)
+        }
+        UpdateTimer()
+        window.addEventListener('load', setResponsiveFont);
+        window.addEventListener('resize', setResponsiveFont);
+
+        function togglePlay() {
+            playbtn.classList.contains('pause')
+            if (playbtn.classList.contains('pause')) {
+                player.pause()
+                playbtn.src = 'playicon.png'
+            } else{
+                player.play()
+                playbtn.src = 'pause.png'
+            }
+
+            playbtn.classList.toggle('pause')
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' + secs : secs}`;
+        }
+
+        const time = document.querySelector('.time')
+        const progress = document.querySelector(".progress")
+        const progress_fill = document.querySelector(".progress-fill")
+
+        setInterval(function() {
+            var timeresult = formatTime(player.currentTime)
+            time.textContent = timeresult
+
+            var percent = player.currentTime / player.duration
+            progress_fill.style.width = (percent*100) + "%"
+        }, 500)
+
+        function setTime(e) {
+            const progressRect = progress.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+
+            const cursorX = clientX - progressRect.left;
+            const progressWidth = progressRect.width;
+
+            let percent = cursorX / progressWidth;
+
+            if (percent > 1) {
+                percent = 1;
+            } else if (percent < 0) {
+                percent = 0;
+            }
+
+            player.currentTime = player.duration * percent;
+        }
+
+        const playbtn = document.querySelector('.play')
+        const player = document.getElementById('player')
+        playbtn.addEventListener('click', togglePlay)
+        progress.addEventListener("click", setTime);
+        progress.addEventListener("touchstart", setTime);
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
+    <title>Happy Anniversary</title>
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="flap"></div>
+            <div class="envelope"></div>
+            <div class="paper">
+                    <h1>Happy Anniversary!!</h1>
+                    <p>
+                        ถึงคนพิเศษ<br>
+                        <br>
+                        ขอบคุณที่เข้ามาเป็นส่วนหนึ่งในชีวิต ทำให้ทุกวันของฉันมีความหมายมากขึ้น
+                        <br><br><br>
+                        แบร่ๆ ทำได้แค่นี้แหละ พึ่งฝึกได้ 2-3 วันเอง เดะรอบหน้าทำให้ดีกว่านี้นะรักนะคับผมจุ๊บๆ :D
+                    </p>
+                    <a href="second.html" class="b1">ลองกดตรงนี้สิ</a>
+            </div>
+            <div class="person">
+            <h1>
+                To<br>
+                Waranya Nakhun
+            </h1>
+        </div>
+        </div>
+    </div>
+    <script>
+        const envelope = document.querySelector(".envelope");
+        const flap = document.querySelector(".flap")
+        const container = document.querySelector(".container")
+        envelope.addEventListener("click", () => {
+            container.classList.toggle("toggle-flap")
+        })
+        flap.addEventListener("click", () => {
+            container.classList.toggle("toggle-flap")
+        })
+
+        function setResponsiveFont() {
+            const paper = document.querySelector('.paper');
+            const person = document.querySelector('.person')
+            const width = container.offsetWidth;
+            const fontSize = width * 0.03;
+
+            paper.style.setProperty('--font-size', `${fontSize}px`);
+            person.style.setProperty('--font-size', `${fontSize}px`);
+        }
+
+        window.addEventListener('load', setResponsiveFont);
+        window.addEventListener('resize', setResponsiveFont);
+    </script>
+</body>
+</html>

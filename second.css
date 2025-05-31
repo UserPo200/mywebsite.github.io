@@ -1,0 +1,262 @@
+body{
+    background-color: rgb(255, 224, 238);
+    overflow: hidden;
+}
+
+.container{
+    user-select: none;
+    position: absolute;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    aspect-ratio: 1;
+    margin: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.container h1{
+    position: relative;
+    font-family: 'itim';
+    color: white;
+    font-size: calc(var(--fontSize)*1.5);
+    text-shadow: 0 0 10px rgb(255, 172, 220);
+    margin-top: 2%;
+}
+
+.counter{
+    position: relative;
+    margin-top: -5%;
+    font-family: 'itim';
+    color: white;
+    font-size: calc(var(--fontSize)*1.5);
+    text-shadow: 0 0 10px rgb(255, 172, 220);
+}
+
+.audio{
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 45%;
+    height: auto;
+    aspect-ratio: 1/1.4;
+    margin-top: 0%;
+    border-radius: calc(var(--fontSize)/2.5);
+    box-shadow: 0 0 40px rgb(255, 191, 228);
+    overflow: hidden;
+}
+
+.audio > img{
+    position: relative;
+    border-radius: calc(var(--fontSize)/2.5);
+    left: 50%;
+    top: 4%;
+    height: auto;
+    width: 80%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 calc(var(--fontSize)/4) rgb(150, 150, 150);
+}
+
+.audio > .musicName{
+    position: relative;
+    font-family: "itim";
+    text-align: center;
+    top: 6%;
+    font-size: calc(var(--fontSize)/1.5);
+}
+
+.audio > .creator{
+    color: rgb(65, 65, 65);
+    position: relative;
+    font-family: "itim";
+    text-align: center;
+    top: 6%;
+    font-size: calc(var(--fontSize)/2);
+}
+
+.audio > .progress{
+    position: relative;
+    width: 90%;
+    height: 1.2%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: calc(var(--fontSize));
+    top: 13%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.audio > .progress > .progress-fill{
+    position: relative;
+    width: 0%;
+    height: 100%;
+    left: 0%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.audio > .timeText{
+    font-family: "itim";
+    position: relative;
+    font-size: calc(var(--fontSize)/2.7);
+    display: flex;
+    top: 8%;
+}
+
+.audio > .timeText > .time{
+    position: fixed;
+    left: 30%;
+}
+
+
+.audio > .timeText > .length{
+    position: fixed;
+    left: 70%;
+    transform: translateX(-100%);
+}
+
+.audio > .button{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 16%;
+    height: 12%;
+}
+
+.audio > .button > .play{
+    filter: brightness(50%) drop-shadow(0 0 calc(var(--fontSize)/15) rgba(0, 0, 0, 0.5));
+    opacity: 80%;
+    width: auto;
+    height: 90%;
+    transition: all 0.2s ease-in-out;
+}
+
+.audio > .button > .previous{
+    filter: brightness(50%) drop-shadow(0 0 calc(var(--fontSize)/15) rgba(0, 0, 0, 0.5));
+    opacity: 80%;
+    width: auto;
+    height: 70%;
+    margin-right: 9%;
+    transition: all 0.2s ease-in-out;
+}
+
+.audio > .button > .next{
+    filter: brightness(50%) drop-shadow(0 0 calc(var(--fontSize)/15) rgba(0, 0, 0, 0.5));
+    opacity: 80%;
+    width: auto;
+    height: 70%;
+    margin-left: 9%;
+    transform: rotateZ(180deg);
+    transition: all 0.2s ease-in-out;
+}
+
+.audio > .button > .play:hover{
+    filter: brightness(0%);
+    height: 100%;
+}
+
+.audio > .button > .previous:hover{
+    filter: brightness(0%);
+    height: 80%;
+}
+
+.audio > .button > .next:hover{
+    filter: brightness(0%);
+    height: 80%;
+}
+
+.heart{
+    user-select: none;
+    top: 0;
+    left: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.heart > .one, .two, .three, .four, .five, .six{
+    z-index: 2;
+    margin-top: 101vh;
+    position: absolute;
+    width: 3%;
+    height: auto;
+    aspect-ratio: 1;
+    transform: rotate(45deg);
+    background-color: rgb(255, 72, 72);
+}
+
+.heart > .one::before, .two::before, .three::before,
+.four::before, .five::before, .six::before{
+    content: '';
+    background-color: rgb(255, 72, 72);
+    border-radius: 50%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.heart > .one::after, .two::after, .three::after,
+.four::after, .five::after, .six::after{
+    content: '';
+    background-color: rgb(255, 72, 72);
+    border-radius: 50%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.heart > .one::before, .two::before, .three::before,
+.four::before, .five::before, .six::before{
+    top: -50%;
+    left: 0;
+}
+
+.heart > .one::after, .two::after, .three::after,
+.four::after, .five::after, .six::after{
+    top: 0;
+    left: -50%;
+}
+
+.heart > .one{
+    left: 4%;
+    animation: heart 2.5s ease-in infinite;
+}
+
+.heart > .two{
+    left: 20%;
+    animation: heart 1s ease-in infinite;
+}
+
+.heart > .three{
+    left: 37%;
+    animation: heart 1.3s ease-in infinite;
+}
+
+.heart > .four{
+    left: 56%;
+    animation: heart 2s ease-in infinite;
+}
+
+.heart > .five{
+    left: 75%;
+    animation: heart 1.5s ease-in infinite;
+}
+
+.heart > .six{
+    left: 92%;
+    animation: heart 3s ease-in infinite;
+}
+
+@keyframes heart{
+    0% {
+        transform: translateY(0%) scale(0.5) rotate(45deg);
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5) rotate(45deg);
+    }
+}

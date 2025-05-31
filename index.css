@@ -1,0 +1,148 @@
+html{
+    font-size: clamp(0.7em, 1vw, 3rem);
+}
+
+body{
+    background-color: rgb(255, 224, 238);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.container{
+    user-select: none;
+    margin: 30vh auto;
+    width: 80%;
+    aspect-ratio: 500/300;
+    max-width: 500px;
+    transition: all 0.5s ease-in-out;
+}
+
+.person h1{
+    position: absolute;
+    z-index: 2;
+    font-family: "Itim", cursive;
+    color: white;
+    margin: 1% 1%;
+    font-size: var(--font-size);
+    bottom: 0;
+}
+
+.envelope-wrapper{
+    position: relative;
+    background: rgb(255, 160, 207);
+    box-shadow: 0 0 40px rgb(255, 191, 228);
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out 0.2s;
+}
+
+.flap{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 166, 211);
+    clip-path: polygon(0% 0%, 100% 0%, 50% 66%);
+    border-radius: 10px;
+    transform-origin: top;
+    transition: all 0.5s ease-in-out 0.2s;
+}
+
+.envelope{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 177, 216);
+    clip-path: polygon(
+    0% 0%,
+    0% 0%,
+    50% 65%,
+    100% 0%,
+    100% 0%,
+    100% 100%,
+    0% 100%);
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out 0.2s;
+}
+
+.paper{
+    position: absolute;
+    z-index: 1;
+    width: 88%;
+    height: 90%;
+    margin: 0% 2%;
+    background: white;
+    border-radius: 10px;
+    bottom: 5%;
+    transition: all 0.5s ease-in-out;
+    padding: 0% 4%;
+    font-family: "Itim", cursive;
+    font-size: var(--font-size);
+    overflow: hidden;
+}
+
+.paper h1{
+    color: rgb(255, 125, 190);
+    font-size: calc(var(--font-size) * 2);
+}
+
+.paper p{
+    font-size: var(--font-size);
+}
+
+.paper > .b1{
+    font-family: "itim", cursive;
+    position: absolute;
+    background-color: rgb(255, 125, 190);
+    box-shadow: 0 0 20px rgb(255, 125, 190);
+    text-decoration: none;
+    color: white;
+    border-radius: var(--font-size);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: calc(var(--font-size) * 2);
+    margin-top: 20%;
+    opacity: 0%;
+    border: 0;
+    transition: all 0.5s ease-in-out;
+    padding: 2% 5%;
+}
+
+.toggle-flap > .envelope-wrapper{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.toggle-flap > .envelope-wrapper > .flap{
+    z-index: 0;
+    transform: rotateX(180deg);
+    border-radius: 0px;
+}
+
+.toggle-flap > .envelope-wrapper > .envelope{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.toggle-flap > .envelope-wrapper > .paper{
+    height: 160%;
+    bottom: 40%;
+    transition-delay: 0.5s;
+}
+
+.toggle-flap > .envelope-wrapper > .paper > .b1{
+    opacity: 100%;
+    transition-delay: 0.5s;
+}
+
+.toggle-flap{
+    margin: 50vh auto;
+    transition-delay: 0.5s;
+}
